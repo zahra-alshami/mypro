@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Socket } from 'ng-socket-io';
 
 @Component({
@@ -7,39 +7,14 @@ import { Socket } from 'ng-socket-io';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  
-  username = '';
-  constructor(public navCtrl: NavController,
-    private socket: Socket, private toastCtrl:ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  joinPresentaion() {
-    var users=new Array('zahra','ghofran','suhel');
- var x=false;
-users.forEach(element => {
-  if (this.username !== '' && this.username===element) {
-  x=true
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad UthoPage');
   }
-});
-if (x=true){
-this.navCtrl.push('PresentationRoomPage',
-{
-  username: this.username,
-  socket: this.socket
-});
-x=false;
+  log()
+  {    this.navCtrl.push('LogPage');
+  }
 }
-else
-this.showToast('user undefined');
-
-
-
-}
-showToast(msg) {
-  let toast = this.toastCtrl.create({
-    message: msg,
-    duration: 4000
-  });
-  toast.present();
-}}
 
